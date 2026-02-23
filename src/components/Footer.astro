@@ -1,0 +1,75 @@
+---
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { href: 'mailto:hola@casa-maria-flora.com', label: 'Email' },
+  { href: 'tel:+31626402256', label: 'Phone' },
+  { href: '/#booking', label: 'Book Now' },
+];
+
+const navLinks = [
+  { href: '/#features', label: 'Features' },
+  { href: '/#booking', label: 'Booking' },
+  { href: '/#gallery', label: 'Gallery' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#about-us', label: 'About Us' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<footer class="mt-auto border-t border-primary/10 bg-[#efe7db]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+    <div class="flex justify-center mb-10">
+      <a href="/" class="inline-block hover:opacity-80 transition-opacity text-center">
+        <img
+          src="/cmf/Logo-Maria-Flora-transparent.png"
+          alt="Casa Maria Flora"
+          class="w-[220px] md:w-[320px] h-28 md:h-32 object-cover [object-position:center_46%] mx-auto block"
+        />
+        <span class="mt-3 block text-xs uppercase tracking-[0.28em] text-muted">
+          Ojen · Andalusia · Spain
+        </span>
+      </a>
+    </div>
+
+    <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-10">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class="text-xs uppercase tracking-[0.2em] text-muted hover:text-accent transition-colors"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex flex-wrap justify-center gap-6 mb-10">
+      {socialLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted hover:text-accent transition-colors"
+          aria-label={label}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mb-10 space-y-2">
+      <p class="text-sm text-muted">
+        Holiday home in Ojen, Malaga, Andalusia, Spain.
+      </p>
+      <p class="text-sm text-muted">
+        Calle Almona 11 · 29610 Ojen · hola@casa-maria-flora.com
+      </p>
+    </div>
+
+    <div class="pt-8 border-t border-accent/10">
+      <p class="text-xs text-muted text-center">
+        © {currentYear} Casa Maria Flora. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

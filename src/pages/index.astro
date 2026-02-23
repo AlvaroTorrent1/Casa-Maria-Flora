@@ -1,0 +1,556 @@
+---
+export const prerender = true;
+
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FadeIn from '../components/FadeIn.astro';
+import AmenityIcon from '../components/AmenityIcon.astro';
+
+const heroImage = '/cmf/1.3.png';
+const imgBedroom = '/cmf/Foto-Gallary-7.jpg';
+const imgKitchen = '/cmf/PHOTO-2023-06-08-12-01-40-3.jpg';
+const imgLiving = '/cmf/PHOTO-2023-06-08-12-01-40-7.jpg';
+const imgDining = '/cmf/PHOTO-2023-06-08-12-02-45-3.jpg';
+const imgTerrace = '/cmf/PHOTO-2023-06-08-12-01-40.jpg';
+const imgLaundry = '/cmf/PHOTO-2023-06-08-12-01-40-6-1.jpg';
+const imgFacade = '/cmf/facade.png';
+const imgSisters = '/cmf/PHOTO-2022-10-28-10-05-44.jpg';
+const imgOjen = '/cmf/OjenSpain-scaled.jpeg';
+const imgPlaza = '/cmf/plaza-ojen.jpeg';
+
+const contactCards = [
+  {
+    label: 'Casa Maria',
+    value: 'Calle Almona 11',
+    lines: ['29610, Ojen', 'Andalusia, Spain'],
+  },
+  {
+    label: 'Email',
+    value: 'hola@casa-maria-flora.com',
+    href: 'mailto:hola@casa-maria-flora.com',
+    lines: [],
+  },
+  {
+    label: 'Phone',
+    value: '+31 (6) 264 022 56',
+    href: 'tel:+31626402256',
+    lines: [],
+  },
+];
+
+const features = [
+  'Beautiful and comfortable apartment in Ojen, Malaga, Andalusia, Spain for 2 persons',
+  'Mountainous landscape and close to restaurants and bars',
+  '1 bedroom and 1 bathroom',
+  'Wonderful roof terrace with lounge area and dining table',
+  'Great holiday accommodation in Andalusia for your stay',
+];
+
+const amenities = [
+  {
+    title: 'Double-Bed',
+    description: 'One master bedroom with a double bed.',
+    iconType: 'bed',
+  },
+  {
+    title: 'Private Bathroom',
+    description: 'A private bathroom adjourning the master bedroom.',
+    iconType: 'bath',
+  },
+  {
+    title: 'Wifi',
+    description: 'We have free WiFi available for our guests.',
+    iconType: 'wifi',
+  },
+  {
+    title: 'Roof Terrace',
+    description: 'On the top of the house there is a little roof terrance to enjoy the lovely weather.',
+    iconType: 'terrace',
+  },
+  {
+    title: 'Kitchen',
+    description: 'Fully equipped kitchen with everything you need to cook a nice meal.',
+    iconType: 'kitchen',
+  },
+  {
+    title: 'Towels',
+    description: "You don't have to bring your own towels, we have them ready for you.",
+    iconType: 'towels',
+  },
+  {
+    title: 'Laundry',
+    description: "There's a washing machine available in the house.",
+    iconType: 'laundry',
+  },
+  {
+    title: 'Airconditioning',
+    description: "To make sure you've comfortable nights, we've equipped the bedroom with airconditioning.",
+    iconType: 'air',
+  },
+  {
+    title: 'Marbella Beach',
+    description: 'Within 15 minutes you can enjoy the lovely Marbella Beach.',
+    iconType: 'beach',
+  },
+  {
+    title: 'Coffee & Tea',
+    description: 'To make your arrival as nice as possible, we have some coffee & tea belongings ready for you.',
+    iconType: 'coffee',
+  },
+  {
+    title: 'Toiletries',
+    description: "In the bathroom we've some toiletries ready for you.",
+    iconType: 'toiletries',
+  },
+];
+
+const gallery = [
+  { src: imgBedroom, alt: 'Bedroom at Casa Maria Flora', cls: 'md:col-span-7 md:row-span-3' },
+  { src: imgKitchen, alt: 'Kitchen', cls: 'md:col-span-5 md:row-span-2' },
+  { src: imgLiving, alt: 'Living area', cls: 'md:col-span-5 md:row-span-1' },
+  { src: imgDining, alt: 'Dining area', cls: 'md:col-span-4 md:row-span-2' },
+  { src: imgTerrace, alt: 'Terrace', cls: 'md:col-span-8 md:row-span-2' },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Thank you for the lovely holiday. We loved your place. The design and facilities were great. We certainly come back.',
+    author: 'Esther van Graaf',
+    visit: 'Visited in June 23.',
+  },
+  {
+    quote:
+      'Great host and good bed! Nice restaurants around the corner.',
+    author: 'Bart Bilaard',
+    visit: 'Visited in June 23.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is a long-stay possible in Casa Maria Flora 11?',
+    a: "Would you like a longer stay in Casa Maria 11? It's possible to book a stay of maximum x days on our website. If you like to stay longer than this period that's also possible. In that case, please reach out to us by email or WhatsApp. You can also fill in our contact form at the bottom of the page. It is possible to have a long stay. Please email or whats app us directly.",
+  },
+  {
+    q: 'Can we come with our child?',
+    a: 'It is possible to come with one child. For a small extra charge of EUR 25,-, we will provide a baby bed. Please inform us in your reservation or per e-mail / phone.',
+  },
+  {
+    q: 'Do I have to pay upfront?',
+    a: 'We ask you to pay 30% of the total rent (including final cleaning), when making the reservation. Once the amount is received on our account, the reservation is confirmed. The complete amount of the reservation needs to be paid 30 days before arrival.',
+  },
+  {
+    q: 'Can we park our car for free?',
+    a: "Yes that's possible! Within a five minute walk there's a public parking place where you can park your car.",
+  },
+];
+---
+
+<Base
+  title="Casa Maria Flora | Holiday Home in Ojen, Andalusia"
+  description="Discover Casa Maria Flora, a holiday home in Ojen (Malaga, Andalusia, Spain) for 2 persons."
+>
+  <Header transparent />
+
+  <main>
+    <section class="pt-28 pb-10 px-3 md:px-4 lg:px-6 bg-background">
+      <div class="max-w-[1560px] mx-auto">
+        <div class="relative rounded-none md:rounded-[6px] overflow-hidden bg-white">
+          <img src={heroImage} alt="Casa Maria Flora hero" class="w-full h-[520px] md:h-[700px] lg:h-[760px] object-cover" loading="eager" />
+          <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15"></div>
+
+          <div class="absolute inset-x-0 top-6 md:top-10 px-4 md:px-8">
+            <FadeIn>
+              <div class="mx-auto max-w-[760px] rounded-2xl border border-white/20 bg-[#f4e9dd]/18 backdrop-blur-[2px] px-5 md:px-8 py-5 md:py-6 text-center text-primary shadow-[0_20px_60px_-35px_rgba(0,0,0,0.22)]">
+                <p class="text-[11px] md:text-xs uppercase tracking-[0.22em] text-[#c96d33]">
+                  Andalusia, Spain
+                </p>
+                <p class="mt-2 text-xl md:text-4xl lg:text-5xl font-light leading-tight [text-shadow:0_1px_0_rgba(255,255,255,0.25)]">
+                  Discover our holiday home
+                </p>
+                <h1 class="mt-2 text-[#c96d33] font-sans font-semibold uppercase tracking-[0.05em] !text-3xl md:!text-5xl lg:!text-6xl">
+                  Casa Maria Flora
+                </h1>
+              </div>
+            </FadeIn>
+          </div>
+
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-5 md:bottom-8 w-[90%] md:w-[74%] max-w-[900px]">
+            <FadeIn delay={120}>
+              <div class="rounded-2xl bg-[#f8f5ef] border border-primary/10 shadow-[0_25px_70px_-40px_rgba(44,42,38,0.45)] px-4 md:px-6 py-4 md:py-[18px]">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-4 md:gap-0 items-stretch">
+                  {contactCards.map((item, idx) => (
+                    <div class:list={[
+                      'px-2 md:px-5 py-1.5',
+                      idx < 2 ? 'md:border-r md:border-primary/10' : '',
+                    ]}>
+                      <p class="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-[#9a5a2f] mb-1.5">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} class="block text-primary text-sm md:text-base underline decoration-primary/30 underline-offset-4">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p class="text-primary text-sm md:text-base">{item.value}</p>
+                      )}
+                      {item.lines.map((line) => (
+                        <p class="text-primary/80 text-sm md:text-base">{line}</p>
+                      ))}
+                    </div>
+                  ))}
+
+                  <div class="md:pl-6 flex items-center">
+                    <a
+                      href="#booking"
+                      class="w-full md:w-auto inline-flex items-center justify-center rounded-xl px-6 md:px-7 py-3 bg-[#d57a3a] text-white text-xs md:text-sm uppercase tracking-[0.14em] hover:bg-[#bf692f] transition-colors"
+                    >
+                      Book Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="scroll-mt-28 pt-24 md:pt-34 pb-20 md:pb-28 px-6 lg:px-8 bg-background">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-start">
+        <FadeIn>
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">Welcome</p>
+            <h2 class="font-display mb-5">Discover our holiday home Casa Maria Flora</h2>
+            <div class="space-y-4 text-muted leading-relaxed">
+              <p>
+                We are welcoming you in sunny Spain. In the authentic Spanish village Ojen with lots of nature and a beach around the corner, we have a sweet holiday home. We offer a fully equipped house to make your stay as pleasant as possible. The house is available for two persons.
+              </p>
+              <p>
+                You can book the house in the low season from 2 nights. In the high season the house is rented per week.
+              </p>
+              <p>
+                To make a booking you can check the availability calendar down below and create your booking directly from our website. If you have special wishes regarding arrival days or longer or shorter stays, please send us an email or whatsapp.
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={120}>
+          <div class="rounded-2xl border border-primary/10 bg-white p-6 md:p-8">
+            <div class="mb-6 rounded-xl overflow-hidden aspect-[16/10]">
+              <img src={imgLaundry} alt="Apartment detail" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <p class="text-xs uppercase tracking-[0.24em] text-[#c96d33] mb-4">Quick facts</p>
+            <ul class="space-y-3">
+              {features.map((item) => (
+                <li class="flex gap-3 text-sm md:text-base leading-relaxed text-primary">
+                  <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#d57a3a] shrink-0"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <FadeIn>
+          <article class="rounded-2xl border border-primary/10 bg-[#fbf8f2] p-7 md:p-9 h-full">
+            <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">Ojen, Spain</p>
+            <h3 class="text-2xl mb-4">One of the 'peublos blanchos'</h3>
+            <div class="space-y-4 text-muted leading-relaxed">
+              <p>
+                Ojen is one of the white-washed villages which are typical for Andalusia and a must for your Spain bucket list. Postcard pretty Ojen is not one of the famous destinations in Andalusia, making this a beautiful hidden gem in Andalusia!
+              </p>
+              <h4 class="text-base font-semibold text-primary pt-1">Charming restaurants</h4>
+              <p>
+                In the heart of Ojen you'll find the city square, with the local church, next to which you'll find multiple terraces and restaurants where you can enjoy some drinks or local food. One of your favorites is probably going to be Pinchos y Chocolate, run by a Dutch couple.
+              </p>
+              <h4 class="text-base font-semibold text-primary pt-1">Beautifull hikes in the direct surrounding</h4>
+              <p>
+                One of the best things to do during your stay in Ojen is hiking in the Juanar nature reserve. The mountain views are beautiful and there are hikes for each fitness level.
+              </p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Mirador hike: 1,5 hour easy hike</li>
+                <li>El Cruz de Juanar hike: 1,5 hike up the mountain</li>
+                <li>El Pozuolo round trip: easy-moderate 3 hours</li>
+                <li>Climbing the Concha: 5 hours to climb the highest mountain</li>
+              </ul>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <div class="rounded-xl overflow-hidden aspect-[4/3]">
+                <img src={imgOjen} alt="Ojen village view" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="rounded-xl overflow-hidden aspect-[4/3]">
+                <img src={imgPlaza} alt="Ojen plaza" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          </article>
+        </FadeIn>
+
+        <FadeIn delay={100}>
+          <article class="rounded-2xl border border-primary/10 bg-background p-7 md:p-9 h-full">
+            <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">Casa Maria Flora</p>
+            <h3 class="text-2xl mb-4">Price per Night</h3>
+            <div class="space-y-3 text-primary">
+              <p><span class="font-medium">EUR 80,-</span></p>
+              <p class="text-sm text-muted">One double bed · Wifi · Excellent host</p>
+              <p class="text-sm text-muted">Private Bathroom · Little roof terrace</p>
+              <p class="text-sm text-muted">Fully equiped kitchen · Small living room · Nature and beach area</p>
+              <p class="text-sm text-muted pt-2">
+                Check the availability below. Booking flow will be reintroduced in Phase 2.
+              </p>
+            </div>
+          </article>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section id="booking" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-background">
+      <div class="max-w-7xl mx-auto">
+        <FadeIn>
+          <div class="rounded-3xl border border-primary/10 bg-white p-8 md:p-10 lg:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">Booking</p>
+                <h2 class="font-display">Book your stay</h2>
+                <p class="mt-5 text-muted leading-relaxed">
+                  To make a booking you can check the availability calendar down below and create your booking directly from our website. If you have special wishes regarding arrival days or longer or shorter stays, please send us an email or whatsapp.
+                </p>
+                <p class="mt-3 text-sm text-muted">
+                  In this Astro phase, the booking engine is temporarily replaced by direct contact until Phase 2.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                  <a href="mailto:hola@casa-maria-flora.com" class="inline-flex items-center justify-center px-7 py-4 bg-primary text-white text-sm uppercase tracking-[0.16em] hover:bg-primary/90 transition-colors">
+                    Email Us
+                  </a>
+                  <a href="#contact" class="inline-flex items-center justify-center px-7 py-4 border border-primary/20 text-primary text-sm uppercase tracking-[0.16em] hover:bg-primary/5 transition-colors">
+                    Contact Section
+                  </a>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-dashed border-primary/20 bg-[#faf7f1] p-6 md:p-7">
+                <p class="text-xs uppercase tracking-[0.22em] text-muted mb-3">Phase 2 placeholder</p>
+                <p class="text-sm leading-relaxed text-muted">
+                  Calendar, date picker, price rules and booking confirmation will be added later using a reservation engine
+                  or PMS integration (instead of reproducing WordPress plugin behavior).
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <FadeIn>
+          <div class="mb-10">
+            <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">Amenities</p>
+            <h2 class="font-display">Apartment features and facilities</h2>
+          </div>
+        </FadeIn>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+          {amenities.map((item, idx) => (
+            <FadeIn delay={idx * 40}>
+              <article class="h-full rounded-2xl border border-primary/10 bg-background px-5 py-5 md:px-6 md:py-6">
+                <div class="flex items-start gap-4">
+                  <div class="shrink-0 w-12 h-12 rounded-xl bg-white border border-primary/10 grid place-items-center">
+                    <AmenityIcon type={item.iconType} />
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="text-base font-semibold text-primary leading-tight">{item.title}</h3>
+                    <p class="mt-2 text-sm text-muted leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-background">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <FadeIn>
+          <article class="rounded-2xl border border-primary/10 bg-white p-7 md:p-9 h-full">
+            <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">Long-stay</p>
+            <p class="text-muted leading-relaxed">
+              Would you like a longer stay in Casa Maria 11? It's possible to book a stay of maximum x days on our website. If you like to stay longer than this period that's also possible. In that case, please reach out to us by email or WhatsApp. You can also fill in our contact form at the bottom of the page. It is possible to have a long stay. Please email or whats app us directly.
+            </p>
+          </article>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <article class="rounded-2xl border border-primary/10 bg-white p-7 md:p-9 h-full">
+            <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">Cancellation policy</p>
+            <div class="space-y-2 text-muted">
+              <p>Over 60 days before the arrival date is free of charge, a credit note of 100% of the amount received will be issued and will remain valid until the end of the following calendar year.</p>
+              <p>Up to 28 days before the arrival date, a credit note of 75% of the amount received will be issued and will remain valid until the end of the following calendar year.</p>
+              <p>27 to 14 days before the arrival date, a credit note of 50% of the amount received will be issued and will remain valid until the end of the following calendar year.</p>
+              <p>13 days before the arrival date, the full amount of the booking.</p>
+              <p>In case of a no show: the full amount of the booking.</p>
+            </div>
+          </article>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section id="gallery" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <FadeIn>
+          <div class="mb-12">
+            <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">Gallery</p>
+            <h2 class="font-display">Take a look inside Casa Maria Flora</h2>
+          </div>
+        </FadeIn>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[220px] md:auto-rows-[180px]">
+          {gallery.map((item, idx) => (
+            <FadeIn delay={idx * 80} class={`${item.cls} overflow-hidden rounded-2xl`}>
+              <img src={item.src} alt={item.alt} class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-[#ddb8a7] border-t border-[#9b5d3d]">
+      <div class="max-w-7xl mx-auto">
+        <FadeIn>
+          <div class="mb-10 md:mb-14">
+            <h2 class="font-sans font-semibold text-white text-4xl md:text-6xl leading-[0.95] max-w-xl">
+              What Our Customers Are Saying
+            </h2>
+          </div>
+        </FadeIn>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+          {testimonials.map((item, idx) => (
+            <FadeIn delay={idx * 100}>
+              <blockquote class="rounded-2xl bg-white p-8 md:p-10 h-full shadow-[0_16px_40px_-28px_rgba(63,22,0,0.35)]">
+                <div class="text-[#e7c36f] text-3xl tracking-[0.08em] leading-none mb-8" aria-hidden="true">
+                  ★★★★★
+                </div>
+                <p class="text-[#d3a08e] text-2xl md:text-[2.05rem] leading-[1.35] font-semibold">
+                  “{item.quote}”
+                </p>
+                <footer class="mt-12">
+                  <p class="text-primary text-2xl font-semibold">{item.author}</p>
+                  <p class="mt-3 text-muted text-lg">{item.visit}</p>
+                </footer>
+              </blockquote>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <FadeIn>
+          <div class="mb-10">
+            <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">FAQ</p>
+            <h2 class="font-display">Frequently asked questions</h2>
+          </div>
+        </FadeIn>
+
+        <div class="space-y-4">
+          {faqs.map((faq, idx) => (
+            <FadeIn delay={idx * 60}>
+              <details class="group rounded-2xl border border-primary/10 bg-background p-5 md:p-6">
+                <summary class="list-none cursor-pointer flex items-start justify-between gap-4">
+                  <span class="text-base md:text-lg font-medium">{faq.q}</span>
+                  <span class="mt-1 text-[#c96d33] transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-4 text-sm md:text-base text-muted leading-relaxed pr-6">{faq.a}</p>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="about-us" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-background">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
+        <FadeIn>
+          <div class="rounded-2xl overflow-hidden aspect-[4/5]">
+            <img src={imgSisters} alt="Maria and Flora" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={100}>
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">About us</p>
+            <h2 class="font-display mb-5">Welcome to Casa Maria Flora</h2>
+            <div class="space-y-4 text-muted leading-relaxed">
+              <p>
+                We are two sisters in law who loves this part of Spain. We are working as entrepreneurs in properties. We fell in love with this little home and designed it into a special Spanish beach style. Hopefully you will enjoy it!
+              </p>
+              <p>
+                <strong>Hola!</strong>
+                <br />
+                Maria and Flora
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section id="contact" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <FadeIn>
+          <div class="rounded-3xl bg-primary text-white p-8 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-white/70 mb-4">Contact</p>
+                <p class="text-sm uppercase tracking-[0.22em] text-white/75">Get In Touch</p>
+                <h2 class="mt-2 font-display text-white">Do you want some more information?</h2>
+                <p class="mt-3 text-white/90 text-lg">Fill in our contact form or give us a call</p>
+                <p class="mt-5 text-white/80 leading-relaxed">
+                  We are keeping this Astro version simple for now, so contact is handled directly by email or phone while the booking engine is rebuilt in Phase 2.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                  <a href="mailto:hola@casa-maria-flora.com" class="inline-flex items-center justify-center px-7 py-4 bg-white text-primary text-sm uppercase tracking-[0.16em] hover:bg-white/90 transition-colors">
+                    hola@casa-maria-flora.com
+                  </a>
+                  <a href="tel:+31626402256" class="inline-flex items-center justify-center px-7 py-4 border border-white/25 text-white text-sm uppercase tracking-[0.16em] hover:bg-white/10 transition-colors">
+                    +31 (6) 264 022 56
+                  </a>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <p class="text-xs uppercase tracking-[0.22em] text-white/70 mb-3">Address</p>
+                <p class="leading-relaxed text-white/90">
+                  Calle Almona 11
+                  <br />
+                  29610, Ojen
+                  <br />
+                  Andalusia, Spain
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/10">
+                  <a
+                    href="https://maps.google.com/?q=Calle+Almona+11,+Ojen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm uppercase tracking-[0.18em] text-white/85 hover:text-white"
+                  >
+                    Open in Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

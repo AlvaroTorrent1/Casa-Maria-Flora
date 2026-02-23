@@ -1,0 +1,126 @@
+---
+type IconType =
+  | 'bed'
+  | 'bath'
+  | 'wifi'
+  | 'terrace'
+  | 'kitchen'
+  | 'towels'
+  | 'laundry'
+  | 'air'
+  | 'beach'
+  | 'coffee'
+  | 'toiletries';
+
+const { type } = Astro.props as { type: IconType };
+const stroke = '#b46a3a';
+const common = {
+  width: '26',
+  height: '26',
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke,
+  'stroke-width': '1.7',
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+};
+---
+
+{type === 'bed' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M3 11v8" />
+    <path d="M21 11v8" />
+    <path d="M3 14h18" />
+    <path d="M5 14V9a2 2 0 0 1 2-2h4a3 3 0 0 1 3 3v4" />
+    <path d="M14 14V10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" />
+  </svg>
+)}
+{type === 'bath' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M5 11h14" />
+    <path d="M6 11V8a2 2 0 0 1 2-2h2" />
+    <path d="M10 6a1.5 1.5 0 1 1 3 0v5" />
+    <path d="M4 11v2a5 5 0 0 0 5 5h6a5 5 0 0 0 5-5v-2" />
+    <path d="M7 18v2" />
+    <path d="M17 18v2" />
+  </svg>
+)}
+{type === 'wifi' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M3.5 9.5a13 13 0 0 1 17 0" />
+    <path d="M6.5 12.5a8.5 8.5 0 0 1 11 0" />
+    <path d="M9.5 15.5a4 4 0 0 1 5 0" />
+    <circle cx="12" cy="19" r="1" fill={stroke} stroke="none" />
+  </svg>
+)}
+{type === 'terrace' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M4 19h16" />
+    <path d="M6 19V9" />
+    <path d="M18 19V9" />
+    <path d="M6 12h12" />
+    <path d="M9 9V5" />
+    <path d="M12 9V4" />
+    <path d="M15 9V6" />
+    <path d="M10 4h4" />
+  </svg>
+)}
+{type === 'kitchen' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M6 4v10" />
+    <path d="M4 6h4" />
+    <path d="M4 9h4" />
+    <path d="M16 4c1.5 1.5 1.5 4 0 5.5l-1 1V20" />
+    <path d="M13 4v6" />
+    <path d="M17 4v6" />
+  </svg>
+)}
+{type === 'towels' && (
+  <svg {...common} aria-hidden="true">
+    <rect x="5" y="7" width="10" height="12" rx="2" />
+    <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h5A1.5 1.5 0 0 1 17 5.5V17" />
+    <path d="M7.5 11h5" />
+  </svg>
+)}
+{type === 'laundry' && (
+  <svg {...common} aria-hidden="true">
+    <rect x="4" y="4" width="16" height="16" rx="2" />
+    <circle cx="12" cy="13" r="4" />
+    <path d="M8 7h.01" />
+    <path d="M11 7h5" />
+  </svg>
+)}
+{type === 'air' && (
+  <svg {...common} aria-hidden="true">
+    <rect x="4" y="6" width="16" height="4" rx="1.5" />
+    <path d="M8 13c0 1-.8 1.2-.8 2.2S8 17 8 18" />
+    <path d="M12 13c0 1-.8 1.2-.8 2.2S12 17 12 18" />
+    <path d="M16 13c0 1-.8 1.2-.8 2.2S16 17 16 18" />
+  </svg>
+)}
+{type === 'beach' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M3 18c2-.8 4-.8 6 0s4 .8 6 0 4-.8 6 0" />
+    <path d="M12 16V8" />
+    <path d="M12 8c-1.8 0-3-1.2-4-2.5 1.8-.3 3.6.3 4 2.5Z" />
+    <path d="M12 8c1.8 0 3-1.2 4-2.5-1.8-.3-3.6.3-4 2.5Z" />
+    <path d="M6 9.5h6" />
+  </svg>
+)}
+{type === 'coffee' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M6 10h9v4a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-4Z" />
+    <path d="M15 11h1.5A2.5 2.5 0 0 1 19 13.5 2.5 2.5 0 0 1 16.5 16H15" />
+    <path d="M8 5c1 1 .2 1.7 0 2.2" />
+    <path d="M11 5c1 1 .2 1.7 0 2.2" />
+    <path d="M14 5c1 1 .2 1.7 0 2.2" />
+    <path d="M5 20h12" />
+  </svg>
+)}
+{type === 'toiletries' && (
+  <svg {...common} aria-hidden="true">
+    <path d="M8 8V6.5A1.5 1.5 0 0 1 9.5 5h5A1.5 1.5 0 0 1 16 6.5V8" />
+    <path d="M7 8h10l-1 10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2L7 8Z" />
+    <path d="M10 12c.6-.6 1.4-.6 2 0s1.4.6 2 0" />
+  </svg>
+)}

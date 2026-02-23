@@ -1,0 +1,100 @@
+---
+export const prerender = true;
+
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FadeIn from '../components/FadeIn.astro';
+
+import heroImage from '../assets/images/paint-cans.png';
+import detailImage from '../assets/images/materials-farrow.jpg';
+---
+
+<Base
+  title="Sobre Casa Maria Flora"
+  description="Conoce el enfoque de Casa Maria Flora: hospitalidad, calma y una experiencia con identidad en Ojen."
+>
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-background">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
+        <FadeIn>
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-accent mb-4">Sobre la casa</p>
+            <h1 class="max-w-3xl">Una experiencia de estancia con gusto y personalidad</h1>
+            <p class="mt-6 text-muted leading-relaxed max-w-2xl">
+              Casa Maria Flora nace para ofrecer una escapada acogedora, tranquila y con caracter. El objetivo de esta
+              web es transmitir esa atmosfera con una presencia digital mas cuidada y mas clara que la version anterior.
+            </p>
+            <p class="mt-4 text-muted leading-relaxed max-w-2xl">
+              El nuevo marco en Astro nos permite mantener la elegancia visual, mejorar el rendimiento y dejar una base
+              lista para crecer con reservas en una segunda fase.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={120}>
+          <div class="rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_30px_80px_-40px_rgba(44,42,38,0.45)]">
+            <img src={heroImage.src} alt="Casa Maria Flora" class="w-full h-full object-cover" />
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <FadeIn>
+          <div class="rounded-2xl border border-primary/10 p-7 md:p-9 bg-[#fbf8f1] h-full">
+            <p class="text-xs uppercase tracking-[0.24em] text-accent mb-4">Vision</p>
+            <h2 class="text-2xl mb-4">Hospitalidad por encima de plantilla</h2>
+            <p class="text-muted leading-relaxed">
+              La marca debe sentirse humana, calida y cuidada. Menos plugin generico, mas identidad visual y mejor
+              narrativa del alojamiento.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={100}>
+          <div class="rounded-2xl border border-primary/10 p-7 md:p-9 bg-background h-full">
+            <p class="text-xs uppercase tracking-[0.24em] text-accent mb-4">Direccion visual</p>
+            <h2 class="text-2xl mb-4">Elegancia natural y ritmo editorial</h2>
+            <p class="text-muted leading-relaxed">
+              Tomamos como marco la web de Elske Lena: composicion premium, espacios amplios, tipografia con caracter
+              y fotografia protagonista adaptada a Casa Maria Flora.
+            </p>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-background">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
+        <FadeIn>
+          <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+            <img src={detailImage.src} alt="Detalle Casa Maria Flora" class="w-full h-full object-cover" />
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={100}>
+          <div class="space-y-5">
+            <p class="text-xs uppercase tracking-[0.28em] text-accent">Roadmap</p>
+            <h2 class="font-display">Fase 1 visual ahora, reservas despues</h2>
+            <p class="text-muted leading-relaxed">
+              Primero consolidamos una home fuerte, galeria, FAQ y CTAs directos para conversion. Despues valoramos
+              si conviene integrar un motor de reservas, un PMS o una solucion con calendario sincronizado.
+            </p>
+            <a
+              href="/#contacto"
+              class="inline-flex items-center px-6 py-3 bg-primary text-white text-xs uppercase tracking-[0.18em] hover:bg-primary/90 transition-colors"
+            >
+              Ir a contacto
+            </a>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

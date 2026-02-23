@@ -1,0 +1,78 @@
+---
+export const prerender = true;
+
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FadeIn from '../components/FadeIn.astro';
+
+import heroImage from '../assets/images/quote-bg.png';
+---
+
+<Base
+  title="Contacto | Casa Maria Flora"
+  description="Contacta con Casa Maria Flora para consultar disponibilidad por Airbnb, Instagram o WhatsApp."
+>
+  <Header />
+
+  <main class="pt-24">
+    <section class="relative py-24 md:py-32 px-6 lg:px-8 overflow-hidden">
+      <div class="absolute inset-0">
+        <img src={heroImage.src} alt="Casa Maria Flora" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-primary/70"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto text-white">
+        <FadeIn>
+          <p class="text-xs uppercase tracking-[0.28em] text-white/70 mb-4">Contacto</p>
+          <h1 class="max-w-4xl">Consulta disponibilidad y planifica tu estancia</h1>
+        </FadeIn>
+        <FadeIn delay={120}>
+          <p class="mt-6 max-w-2xl text-white/85 leading-relaxed">
+            En esta primera fase priorizamos un contacto directo y sencillo. Escribenos por Instagram, WhatsApp o
+            revisa disponibilidad en Airbnb.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 px-6 lg:px-8 bg-white">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          ['Airbnb', 'Canal recomendado para revisar disponibilidad y reserva.', 'https://www.airbnb.com/', 'Ver anuncio'],
+          ['Instagram', 'Canal directo para dudas rapidas y primer contacto.', 'https://www.instagram.com/', 'Abrir Instagram'],
+          ['WhatsApp', 'Ideal para consultas cortas sobre fechas y estancia.', 'https://wa.me/', 'Abrir WhatsApp'],
+        ].map(([title, text, href, cta], idx) => (
+          <FadeIn delay={idx * 100}>
+            <article class="rounded-2xl border border-primary/10 bg-background p-6 md:p-8 h-full flex flex-col">
+              <p class="text-xs uppercase tracking-[0.24em] text-accent mb-4">{title}</p>
+              <p class="text-sm text-muted leading-relaxed flex-1">{text}</p>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-6 inline-flex items-center justify-center px-5 py-3 bg-primary text-white text-xs uppercase tracking-[0.18em] hover:bg-primary/90 transition-colors"
+              >
+                {cta}
+              </a>
+            </article>
+          </FadeIn>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-20 md:py-24 px-6 lg:px-8 bg-background">
+      <div class="max-w-4xl mx-auto text-center">
+        <FadeIn>
+          <h2 class="font-display mb-5">Nota de implementacion</h2>
+          <p class="text-muted leading-relaxed">
+            La API con Resend puede mantenerse como opcion futura, pero en Fase 1 el flujo visual y de conversion
+            queda simplificado hacia canales directos. Sustituye estos enlaces por los definitivos de Casa Maria Flora.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
