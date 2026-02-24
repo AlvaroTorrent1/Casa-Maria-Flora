@@ -1,17 +1,20 @@
 ---
+import LanguageSelector from './LanguageSelector.astro';
+import { getCmfCopy } from '../i18n/cmf';
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
 interface Props {
   transparent?: boolean;
 }
 
 const { transparent = false } = Astro.props;
-
-const navItems = [
-  { href: '/#booking', label: 'Book Now' },
-  { href: '/#features', label: 'Features' },
-  { href: '/#gallery', label: 'Gallery' },
-  { href: '/#about-us', label: 'About Us' },
-  { href: '/#contact', label: 'Contact' },
-];
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const copy = getCmfCopy(lang);
+const navItems = copy.header.nav.map((item) => ({
+  ...item,
+  href: translatePath(item.href),
+}));
 ---
 
 <header
@@ -23,7 +26,7 @@ const navItems = [
   data-transparent={transparent.toString()}
 >
   <nav class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex items-center justify-between">
-    <a href="/" class="hover:opacity-80 transition-opacity" aria-label="Home">
+    <a href={translatePath('/')} class="hover:opacity-80 transition-opacity" aria-label={copy.header.homeLabel}>
         <img
         src="/cmf/Logo-Maria-Flora-transparent.png"
         alt="Casa Maria Flora"
@@ -31,28 +34,31 @@ const navItems = [
       />
     </a>
 
-    <ul class="hidden md:flex items-center gap-8">
-      {navItems.map(({ href, label }) => (
-        <li>
-          <a
-            href={href}
-            class="text-sm tracking-[0.18em] uppercase transition-opacity opacity-80 hover:opacity-100"
-          >
-            {label}
-          </a>
-        </li>
-      ))}
-      <li class="ml-4">
+    <div class="hidden md:flex items-center gap-4 lg:gap-6">
+      <ul class="flex items-center gap-8">
+        {navItems.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class="text-sm tracking-[0.18em] uppercase transition-opacity opacity-80 hover:opacity-100"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <LanguageSelector codes={['en', 'es']} basePath="/" />
+      <div class="ml-1">
         <a
-          href="/#booking"
+          href={translatePath('/#reserva-directa')}
           class="inline-flex items-center rounded-full border border-current/30 bg-background/25 px-4 py-2 text-xs tracking-[0.18em] uppercase hover:bg-background/40"
         >
-          Book Now
+          {copy.header.cta}
         </a>
-      </li>
-    </ul>
+      </div>
+    </div>
 
-    <button class="md:hidden p-2 -mr-2" aria-label="Toggle menu" data-menu-toggle>
+    <button class="md:hidden p-2 -mr-2" aria-label={copy.header.menuToggleLabel} data-menu-toggle>
       <div class="w-6 flex flex-col gap-1.5" data-menu-icon>
         <span class="block h-px bg-current transition-transform origin-center"></span>
         <span class="block h-px bg-current transition-opacity"></span>
@@ -66,6 +72,7 @@ const navItems = [
     data-mobile-menu
   >
     <div class="flex flex-col items-center gap-12">
+      <LanguageSelector codes={['en', 'es']} basePath="/" />
       <ul class="flex flex-col items-center gap-8">
         {navItems.map(({ href, label }) => (
           <li>
@@ -77,10 +84,10 @@ const navItems = [
       </ul>
 
       <a
-        href="/#booking"
+        href={translatePath('/#reserva-directa')}
         class="inline-flex items-center rounded-full border border-primary/20 px-5 py-3 text-sm tracking-[0.16em] uppercase"
       >
-        Book Now
+        {copy.header.cta}
       </a>
     </div>
   </div>
