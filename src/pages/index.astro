@@ -208,20 +208,68 @@ const faqs = copy.faqSection.items;
       <div class="max-w-7xl mx-auto">
         <FadeIn>
           <div class="rounded-3xl border border-primary/10 bg-white p-8 md:p-10 lg:p-12">
-            <div class="w-full max-w-5xl">
-              <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">{copy.bookingSection.eyebrow}</p>
-              <h2 class="font-display">{copy.bookingSection.title}</h2>
-              <p class="mt-5 text-muted leading-relaxed text-lg/relaxed max-w-4xl">
-                {copy.bookingSection.body}
-              </p>
-              <p class="mt-4 text-sm md:text-base text-muted max-w-4xl">
-                {copy.bookingSection.note}
-              </p>
-              <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                <a href={translatePath('/#contact')} class="inline-flex items-center justify-center px-7 py-4 bg-primary text-white text-sm uppercase tracking-[0.16em] hover:bg-primary/90 transition-colors">
-                  {copy.bookingSection.contactButton}
-                </a>
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center">
+
+              <!-- Left: award text -->
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-[#c96d33] mb-4">
+                  {lang === 'es' ? 'Reconocimiento' : 'Recognition'}
+                </p>
+                <h2 class="font-display mb-5">
+                  {lang === 'es'
+                    ? 'Premio Traveller Review Awards 2026'
+                    : 'Traveller Review Awards 2026'}
+                </h2>
+                <p class="mt-2 text-muted leading-relaxed text-lg/relaxed max-w-2xl">
+                  {lang === 'es'
+                    ? 'Casa Maria Flora ha sido galardonada con el Premio Traveller Review Awards 2026 de Booking.com, obteniendo una puntuación de 8,4 sobre 10 gracias a las valoraciones de nuestros huéspedes.'
+                    : 'Casa Maria Flora has been awarded the Booking.com Traveller Review Award 2026, achieving a score of 8.4 out of 10 based on our guests\' reviews.'}
+                </p>
+
+                <!-- Score badge row -->
+                <div class="mt-8 flex flex-wrap items-center gap-6">
+                  <div class="flex items-center gap-3 rounded-2xl bg-[#003580] px-6 py-4">
+                    <span class="text-white text-4xl font-bold tracking-tight">8,4</span>
+                    <div class="text-white/80 text-xs leading-snug">
+                      <span class="block font-semibold text-sm">Booking.com</span>
+                      <span class="block">{lang === 'es' ? 'sobre 10' : 'out of 10'}</span>
+                    </div>
+                  </div>
+                  <div class="text-muted text-sm leading-relaxed max-w-xs">
+                    {lang === 'es'
+                      ? 'Basado en las reseñas verificadas de viajeros reales en Booking.com.'
+                      : 'Based on verified reviews from real travellers on Booking.com.'}
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <a
+                    href="https://www.booking.com/hotel/es/casa-maria-flora.es.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center px-7 py-4 bg-[#003580] text-white text-sm uppercase tracking-[0.16em] hover:bg-[#00276e] transition-colors rounded-xl"
+                  >
+                    {lang === 'es' ? 'Ver en Booking.com' : 'View on Booking.com'}
+                  </a>
+                </div>
               </div>
+
+              <!-- Right: two badges side by side, same height -->
+              <div class="flex flex-row gap-6 items-stretch justify-center lg:justify-end">
+                <img
+                  src="/Instagram-Stories-Generic_TRA-2026.png"
+                  alt="We're proud to be a Traveller Review Award 2026 winner – Booking.com"
+                  class="rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)] object-cover w-44 lg:w-52"
+                  loading="lazy"
+                />
+                <img
+                  src="/Social-Media_TRA-2026.png"
+                  alt="Booking.com Traveller Review Award 2026 – 8.4 out of 10"
+                  class="rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)] object-cover w-44 lg:w-52"
+                  loading="lazy"
+                />
+              </div>
+
             </div>
           </div>
         </FadeIn>
