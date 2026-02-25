@@ -40,8 +40,8 @@ import heroImage from '../assets/images/quote-bg.png';
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           ['Airbnb', 'Canal recomendado para revisar disponibilidad y reserva.', 'https://www.airbnb.com/', 'Ver anuncio'],
-          ['Instagram', 'Canal directo para dudas rapidas y primer contacto.', 'https://www.instagram.com/', 'Abrir Instagram'],
-          ['WhatsApp', 'Ideal para consultas cortas sobre fechas y estancia.', 'https://wa.me/', 'Abrir WhatsApp'],
+          ['Instagram', 'Canal directo para dudas rapidas y primer contacto.', 'https://www.instagram.com/casamariaflora/', 'Abrir Instagram'],
+          ['WhatsApp', 'Ideal para consultas cortas sobre fechas y estancia.', 'https://wa.me/34680607675', 'Abrir WhatsApp'],
         ].map(([title, text, href, cta], idx) => (
           <FadeIn delay={idx * 100}>
             <article class="rounded-2xl border border-primary/10 bg-background p-6 md:p-8 h-full flex flex-col">
@@ -61,17 +61,6 @@ import heroImage from '../assets/images/quote-bg.png';
       </div>
     </section>
 
-    <section class="py-20 md:py-24 px-6 lg:px-8 bg-background">
-      <div class="max-w-4xl mx-auto text-center">
-        <FadeIn>
-          <h2 class="font-display mb-5">Nota de implementacion</h2>
-          <p class="text-muted leading-relaxed">
-            La API con Resend puede mantenerse como opcion futura, pero en Fase 1 el flujo visual y de conversion
-            queda simplificado hacia canales directos. Sustituye estos enlaces por los definitivos de Casa Maria Flora.
-          </p>
-        </FadeIn>
-      </div>
-    </section>
   </main>
 
   <Footer />

@@ -1,17 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://casa-maria-flora.com',
   
-  // Server mode for API routes, pages prerender by default
-  output: 'server',
-  adapter: vercel({
-    isr: true, // Enable Incremental Static Regeneration for better performance
-  }),
+  output: 'static',
   
   i18n: {
     defaultLocale: 'en',
