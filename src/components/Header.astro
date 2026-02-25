@@ -50,7 +50,7 @@ const navItems = copy.header.nav.map((item) => ({
       <LanguageSelector codes={['en', 'es']} basePath="/" />
       <div class="ml-1">
         <a
-          href={translatePath('/#reserva-directa')}
+          href={translatePath('/#booking-widget')}
           class="inline-flex items-center rounded-full border border-current/30 bg-background/25 px-4 py-2 text-xs tracking-[0.18em] uppercase hover:bg-background/40"
         >
           {copy.header.cta}
@@ -68,15 +68,17 @@ const navItems = copy.header.nav.map((item) => ({
   </nav>
 
   <div
-    class="md:hidden fixed inset-0 bg-background text-primary z-40 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+    class="md:hidden absolute left-4 right-4 top-[calc(100%+0.25rem)] rounded-2xl border border-primary/10 bg-background text-primary shadow-2xl opacity-0 pointer-events-none -translate-y-2 transition-all duration-300"
     data-mobile-menu
   >
-    <div class="flex flex-col items-center gap-12">
-      <LanguageSelector codes={['en', 'es']} basePath="/" />
-      <ul class="flex flex-col items-center gap-8">
+    <div class="flex flex-col gap-6 p-6">
+      <div class="flex justify-start">
+        <LanguageSelector codes={['en', 'es']} basePath="/" />
+      </div>
+      <ul class="flex flex-col gap-4">
         {navItems.map(({ href, label }) => (
           <li>
-            <a href={href} class="text-2xl font-serif tracking-wide">
+            <a href={href} class="block py-1 text-2xl font-serif tracking-wide">
               {label}
             </a>
           </li>
@@ -84,8 +86,8 @@ const navItems = copy.header.nav.map((item) => ({
       </ul>
 
       <a
-        href={translatePath('/#reserva-directa')}
-        class="inline-flex items-center rounded-full border border-primary/20 px-5 py-3 text-sm tracking-[0.16em] uppercase"
+        href={translatePath('/#booking-widget')}
+        class="inline-flex w-fit items-center rounded-full border border-primary/20 bg-white/60 px-5 py-3 text-sm tracking-[0.16em] uppercase"
       >
         {copy.header.cta}
       </a>
@@ -108,23 +110,26 @@ const navItems = copy.header.nav.map((item) => ({
       isMenuOpen = !isMenuOpen;
 
       if (isMenuOpen) {
-        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+        mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
         menuIcon.classList.add('menu-open');
+        header.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
       } else {
-        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
         menuIcon.classList.remove('menu-open');
+        header.classList.remove('menu-open');
         document.body.style.overflow = '';
       }
     });
 
     mobileMenu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
         menuIcon.classList.remove('menu-open');
+        header.classList.remove('menu-open');
         document.body.style.overflow = '';
         isMenuOpen = false;
       });
@@ -133,6 +138,8 @@ const navItems = copy.header.nav.map((item) => ({
     window.addEventListener(
       'scroll',
       () => {
+        if (isMenuOpen) return;
+
         const currentScroll = window.scrollY;
 
         if (currentScroll > 100) {
@@ -152,6 +159,11 @@ const navItems = copy.header.nav.map((item) => ({
 </script>
 
 <style>
+  [data-header].menu-open {
+    background-color: color-mix(in srgb, var(--color-background) 96%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
   [data-menu-icon].menu-open span:first-child {
     transform: translateY(5px) rotate(45deg);
   }

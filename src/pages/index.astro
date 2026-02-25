@@ -24,6 +24,7 @@ const imgBeach = '/cmf/istockphoto-1363636426-612x612-1.jpeg';
 const imgDormitorio = '/dormitorio-maria-flora.jpg';
 const lang = getLangFromUrl(Astro.url);
 const bookingEmbedLang = lang === 'es' ? 'es' : 'en';
+const bookingEmbedUrl = `https://hosthelperai.com/book/casa-maria-flora?lang=${bookingEmbedLang}`;
 const translatePath = useTranslatedPath(lang);
 const copy = getCmfCopy(lang);
 const contactCards = copy.hero.contactCards;
@@ -46,38 +47,40 @@ const faqs = copy.faqSection.items;
   title={copy.meta.title}
   description={copy.meta.description}
 >
-  <Header transparent />
+  <Header />
 
   <main>
-    <section class="pt-28 pb-10 px-3 md:px-4 lg:px-6 bg-background">
+    <section class="pt-[88px] md:pt-[96px] pb-10 px-2 sm:px-3 md:px-4 lg:px-6 bg-background">
       <div class="max-w-[1560px] mx-auto">
-        <div class="relative rounded-none md:rounded-[6px] overflow-hidden bg-white">
-          <img src={heroImage} alt="Casa Maria Flora hero" class="w-full h-[520px] md:h-[700px] lg:h-[760px] object-cover" loading="eager" />
-          <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15"></div>
+        <div class="relative rounded-none md:rounded-[6px] bg-white">
+          <div class="relative overflow-hidden md:rounded-[6px]">
+            <img src={heroImage} alt="Casa Maria Flora hero" class="w-full h-[480px] md:h-[620px] lg:h-[700px] object-cover" loading="eager" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15"></div>
 
-          <div class="absolute inset-x-0 top-6 md:top-10 px-4 md:px-8">
-            <FadeIn>
-              <div class="mx-auto max-w-[760px] rounded-2xl border border-white/20 bg-[#f4e9dd]/18 backdrop-blur-[2px] px-5 md:px-8 py-5 md:py-6 text-center text-primary shadow-[0_20px_60px_-35px_rgba(0,0,0,0.22)]">
-                <p class="text-[11px] md:text-xs uppercase tracking-[0.22em] text-[#c96d33]">
-                  {copy.hero.location}
-                </p>
-                <p class="mt-2 text-xl md:text-4xl lg:text-5xl font-light leading-tight [text-shadow:0_1px_0_rgba(255,255,255,0.25)]">
-                  {copy.hero.title}
-                </p>
-                <h1 class="mt-2 text-[#c96d33] font-sans font-semibold uppercase tracking-[0.05em] !text-3xl md:!text-5xl lg:!text-6xl">
-                  Casa Maria Flora
-                </h1>
-              </div>
-            </FadeIn>
+            <div class="absolute inset-x-0 top-6 md:top-10 px-3 sm:px-4 md:px-8">
+              <FadeIn>
+                <div class="mx-auto max-w-[760px] rounded-2xl border border-white/20 bg-[#f4e9dd]/18 backdrop-blur-[2px] px-4 sm:px-5 md:px-8 py-5 md:py-6 text-center text-primary shadow-[0_20px_60px_-35px_rgba(0,0,0,0.22)]">
+                  <p class="text-[11px] md:text-xs uppercase tracking-[0.22em] text-[#c96d33]">
+                    {copy.hero.location}
+                  </p>
+                  <p class="mt-2 text-xl md:text-4xl lg:text-5xl font-light leading-tight [text-shadow:0_1px_0_rgba(255,255,255,0.25)]">
+                    {copy.hero.title}
+                  </p>
+                  <h1 class="mt-2 text-[#c96d33] font-sans font-semibold uppercase tracking-[0.05em] !text-3xl md:!text-5xl lg:!text-6xl">
+                    Casa Maria Flora
+                  </h1>
+                </div>
+              </FadeIn>
+            </div>
           </div>
 
-          <div class="absolute left-1/2 -translate-x-1/2 bottom-5 md:bottom-8 w-[90%] md:w-[74%] max-w-[900px]">
+          <div class="mt-4 px-3 sm:px-4 md:mt-0 md:px-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-5 lg:bottom-8 w-full md:w-[74%] max-w-[900px]">
             <FadeIn delay={120}>
-              <div class="rounded-2xl bg-[#f8f5ef] border border-primary/10 shadow-[0_25px_70px_-40px_rgba(44,42,38,0.45)] px-4 md:px-6 py-4 md:py-[18px]">
+              <div class="rounded-2xl bg-[#f8f5ef] border border-primary/10 shadow-[0_25px_70px_-40px_rgba(44,42,38,0.45)] px-3 sm:px-4 md:px-6 py-4 md:py-[18px]">
                 <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-4 md:gap-0 items-stretch">
                   {contactCards.map((item, idx) => (
                     <div class:list={[
-                      'px-2 md:px-5 py-1.5',
+                      'px-1.5 sm:px-2 md:px-5 py-1.5',
                       idx < 2 ? 'md:border-r md:border-primary/10' : '',
                     ]}>
                       <p class="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-[#9a5a2f] mb-1.5">{item.label}</p>
@@ -96,7 +99,7 @@ const faqs = copy.faqSection.items;
 
                   <div class="md:pl-6 flex items-center">
                     <a
-                      href={translatePath('/#reserva-directa')}
+                      href={translatePath('/#booking-widget')}
                       class="w-full md:w-auto inline-flex items-center justify-center rounded-xl px-6 md:px-7 py-3 bg-[#d57a3a] text-white text-xs md:text-sm uppercase tracking-[0.14em] hover:bg-[#bf692f] transition-colors"
                     >
                       {copy.hero.cta}
@@ -110,7 +113,7 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section id="features" class="scroll-mt-28 pt-24 md:pt-34 pb-20 md:pb-28 px-6 lg:px-8 bg-background">
+    <section id="features" class="scroll-mt-28 pt-24 md:pt-34 pb-20 md:pb-28 px-4 sm:px-6 lg:px-8 bg-background">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-start">
         <FadeIn>
           <div>
@@ -121,14 +124,14 @@ const faqs = copy.faqSection.items;
                 <p>{paragraph}</p>
               ))}
             </div>
-            <div class="mt-6 rounded-xl overflow-hidden aspect-[16/10] border border-primary/10 bg-white">
-              <img src={imgDormitorio} alt="Bedroom at Casa Maria Flora" class="w-full h-full object-cover" loading="lazy" />
+            <div class="mt-6 rounded-xl overflow-hidden aspect-[4/5] sm:aspect-[16/10] border border-primary/10 bg-white">
+              <img src={imgDormitorio} alt="Bedroom at Casa Maria Flora" class="w-full h-full object-cover object-center" loading="lazy" />
             </div>
           </div>
         </FadeIn>
 
         <FadeIn delay={120}>
-          <div class="rounded-2xl border border-primary/10 bg-white p-6 md:p-8">
+          <div class="rounded-2xl border border-primary/10 bg-white p-4 sm:p-5 md:p-8">
             <div class="mb-6 rounded-xl overflow-hidden aspect-[16/10]">
               <img src={imgBeach} alt="Marbella beach near Ojen" class="w-full h-full object-cover" loading="lazy" />
             </div>
@@ -146,10 +149,10 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section id="reserva-directa" class="py-20 md:py-28 px-6 lg:px-8 bg-white scroll-mt-24">
+    <section id="reserva-directa" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-24 md:scroll-mt-32">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
         <FadeIn>
-          <article class="rounded-2xl border border-primary/10 bg-[#fbf8f2] p-7 md:p-9 h-full flex flex-col">
+          <article class="rounded-2xl border border-primary/10 bg-[#fbf8f2] p-5 sm:p-6 md:p-9 h-full flex flex-col">
             <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">{copy.ojenCard.eyebrow}</p>
             <h3 class="text-2xl mb-4">{copy.ojenCard.title}</h3>
             <div class="space-y-4 text-muted leading-relaxed flex-grow">
@@ -164,7 +167,7 @@ const faqs = copy.faqSection.items;
                 ))}
               </ul>
             </div>
-            <div class="mt-6 grid grid-cols-2 gap-3">
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="rounded-xl overflow-hidden aspect-[4/3]">
                 <img src={imgOjen} alt="Ojen village view" class="w-full h-full object-cover" loading="lazy" />
               </div>
@@ -176,38 +179,38 @@ const faqs = copy.faqSection.items;
         </FadeIn>
 
         <FadeIn delay={100}>
-          <article class="rounded-2xl border border-primary/10 bg-background p-7 md:p-9 h-full flex flex-col">
-            <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">{copy.directBooking.eyebrow}</p>
+          <article id="booking-widget" class="rounded-2xl border border-primary/10 bg-background p-3 sm:p-6 md:p-9 h-full flex flex-col scroll-mt-24 md:scroll-mt-32">
+            <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-1">{copy.directBooking.eyebrow}</p>
             <h3 class="text-2xl mb-4">{copy.directBooking.title}</h3>
-            <div class="rounded-2xl overflow-hidden border border-primary/10 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] flex-grow">
-              <!-- Reserva directa - Casa María Flora -->
+
+            <!-- iframe wrapper — becomes fullscreen target -->
+            <div
+              id="booking-iframe-wrapper"
+              class="flex-grow -mx-3 sm:mx-0 rounded-none sm:rounded-2xl border-y border-primary/10 sm:border sm:border-primary/10 bg-white shadow-none sm:shadow-[0_4px_24px_rgba(0,0,0,0.08)] overflow-hidden relative"
+              role="region"
+              aria-label={lang === 'es' ? 'Widget de reserva' : 'Booking widget'}
+            >
               <iframe
-                src={`https://hosthelperai.com/book/casa-maria-flora?lang=${bookingEmbedLang}`}
+                id="booking-iframe"
+                src={bookingEmbedUrl}
                 width="100%"
                 height="100%"
-                style="border: none; min-height: 700px;"
+                class="block w-full"
+                style="border: none; min-height: 680px; display: block;"
                 loading="lazy"
                 title={copy.directBooking.iframeTitle}
               ></iframe>
             </div>
-            <div class="space-y-3 text-primary hidden">
-              <p><span class="font-medium">EUR 80,-</span></p>
-              <p class="text-sm text-muted">One double bed · Wifi · Excellent host</p>
-              <p class="text-sm text-muted">Private Bathroom · Little roof terrace</p>
-              <p class="text-sm text-muted">Fully equiped kitchen · Small living room · Nature and beach area</p>
-              <p class="text-sm text-muted pt-2">
-                {copy.bookingSection.placeholderText}
-              </p>
-            </div>
           </article>
         </FadeIn>
+
       </div>
     </section>
 
-    <section id="booking" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-background">
+    <section id="booking" class="scroll-mt-28 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-background">
       <div class="max-w-7xl mx-auto">
         <FadeIn>
-          <div class="rounded-3xl border border-primary/10 bg-white p-8 md:p-10 lg:p-12">
+          <div class="rounded-3xl border border-primary/10 bg-white p-5 sm:p-7 md:p-10 lg:p-12">
             <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center">
 
               <!-- Left: award text -->
@@ -254,21 +257,71 @@ const faqs = copy.faqSection.items;
                 </div>
               </div>
 
-              <!-- Right: two badges side by side, same height, natural proportions -->
-              <div class="flex flex-row gap-6 items-end justify-center lg:justify-end">
-                <img
-                  src="/Instagram-Stories-Generic_TRA-2026.png"
-                  alt="We're proud to be a Traveller Review Award 2026 winner – Booking.com"
-                  class="rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)] h-72 lg:h-80 w-auto"
-                  loading="lazy"
-                />
-                <img
-                  src="/Social-Media_TRA-2026.png"
-                  alt="Booking.com Traveller Review Award 2026 – 8.4 out of 10"
-                  class="rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)] h-72 lg:h-80 w-auto"
-                  loading="lazy"
-                />
+              <!-- Right: touch carousel on mobile / side-by-side on desktop -->
+              <!-- Mobile: wrapper clips and scroll-snaps; Desktop: plain flex row -->
+              <div class="hidden lg:flex lg:flex-row lg:gap-6 lg:items-stretch">
+                <!-- Desktop card 1 -->
+                <div class="w-48 h-[340px] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)]">
+                  <img src="/Instagram-Stories-Generic_TRA-2026.png" alt="We're proud to be a Traveller Review Award 2026 winner – Booking.com" class="w-full h-full object-contain bg-[#003580]" loading="lazy" />
+                </div>
+                <!-- Desktop card 2 -->
+                <div class="w-48 h-[340px] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)]">
+                  <img src="/Social-Media_TRA-2026.png" alt="Booking.com Traveller Review Award 2026 – 8.4 out of 10" class="w-full h-full object-contain bg-[#003580]" loading="lazy" />
+                </div>
               </div>
+
+              <!-- Mobile carousel (hidden on lg+) -->
+              <div class="lg:hidden flex flex-col">
+                <div
+                  id="awards-carousel"
+                  class="flex flex-row overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                  role="region"
+                  aria-label={lang === 'es' ? 'Galeria de premios deslizable' : 'Swipeable awards gallery'}
+                >
+                  <!-- Slide 1 -->
+                  <div class="snap-center shrink-0 w-full h-[340px] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)]">
+                    <img
+                      src="/Instagram-Stories-Generic_TRA-2026.png"
+                      alt="We're proud to be a Traveller Review Award 2026 winner – Booking.com"
+                      class="w-full h-full object-contain bg-[#003580]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <!-- Slide 2 -->
+                  <div class="snap-center shrink-0 w-full h-[340px] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,53,128,0.35)]">
+                    <img
+                      src="/Social-Media_TRA-2026.png"
+                      alt="Booking.com Traveller Review Award 2026 – 8.4 out of 10"
+                      class="w-full h-full object-contain bg-[#003580]"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <!-- Dot indicators -->
+                <div class="flex justify-center gap-2 mt-3" aria-hidden="true">
+                  <button class="awards-dot w-2.5 h-2.5 rounded-full bg-[#003580] transition-opacity" style="opacity:1" data-index="0" aria-label="Card 1"></button>
+                  <button class="awards-dot w-2.5 h-2.5 rounded-full bg-[#003580] transition-opacity" style="opacity:0.3" data-index="1" aria-label="Card 2"></button>
+                </div>
+              </div>
+
+              <script>
+                const carousel = document.getElementById('awards-carousel');
+                const dots = document.querySelectorAll('.awards-dot');
+                if (carousel && dots.length) {
+                  carousel.addEventListener('scroll', () => {
+                    const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+                    dots.forEach((d, i) => {
+                      (d as HTMLElement).style.opacity = i === idx ? '1' : '0.3';
+                    });
+                  }, { passive: true });
+                  dots.forEach((dot) => {
+                    dot.addEventListener('click', () => {
+                      const i = Number((dot as HTMLElement).dataset.index);
+                      carousel.scrollTo({ left: i * carousel.offsetWidth, behavior: 'smooth' });
+                    });
+                  });
+                }
+              </script>
 
             </div>
           </div>
@@ -276,7 +329,7 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section class="py-20 md:py-28 px-6 lg:px-8 bg-white">
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
       <div class="max-w-7xl mx-auto">
         <FadeIn>
           <div class="mb-10">
@@ -288,7 +341,7 @@ const faqs = copy.faqSection.items;
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {amenities.map((item, idx) => (
             <FadeIn delay={idx * 40}>
-              <article class="h-full rounded-2xl border border-primary/10 bg-background px-5 py-5 md:px-6 md:py-6">
+              <article class="h-full rounded-2xl border border-primary/10 bg-background px-4 py-4 sm:px-5 sm:py-5 md:px-6 md:py-6">
                 <div class="flex items-start gap-4">
                   <div class="shrink-0 w-12 h-12 rounded-xl bg-white border border-primary/10 grid place-items-center">
                     <AmenityIcon type={item.iconType} />
@@ -305,16 +358,16 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section class="py-20 md:py-28 px-6 lg:px-8 bg-background">
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-background">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FadeIn>
-          <article class="rounded-2xl border border-primary/10 bg-white p-7 md:p-9 h-full">
+          <article class="rounded-2xl border border-primary/10 bg-white p-5 sm:p-6 md:p-9 h-full">
             <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">{copy.policies.longStayTitle}</p>
             <p class="text-muted leading-relaxed">{copy.policies.longStayBody}</p>
           </article>
         </FadeIn>
         <FadeIn delay={100}>
-          <article class="rounded-2xl border border-primary/10 bg-white p-7 md:p-9 h-full">
+          <article class="rounded-2xl border border-primary/10 bg-white p-5 sm:p-6 md:p-9 h-full">
             <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-4">{copy.policies.cancellationTitle}</p>
             <div class="space-y-2 text-muted">
               {copy.policies.cancellationItems.map((item) => (
@@ -326,7 +379,7 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section id="gallery" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-white">
+    <section id="gallery" class="scroll-mt-28 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
       <div class="max-w-7xl mx-auto">
         <FadeIn>
           <div class="mb-12">
@@ -345,7 +398,7 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section class="py-20 md:py-28 px-6 lg:px-8 bg-[#ddb8a7] border-t border-[#9b5d3d]">
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#ddb8a7] border-t border-[#9b5d3d]">
       <div class="max-w-7xl mx-auto">
         <FadeIn>
           <div class="mb-10 md:mb-14">
@@ -358,7 +411,7 @@ const faqs = copy.faqSection.items;
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
           {testimonials.map((item, idx) => (
             <FadeIn delay={idx * 100}>
-              <blockquote class="rounded-2xl bg-white p-8 md:p-10 h-full shadow-[0_16px_40px_-28px_rgba(63,22,0,0.35)]">
+              <blockquote class="rounded-2xl bg-white p-5 sm:p-8 md:p-10 h-full shadow-[0_16px_40px_-28px_rgba(63,22,0,0.35)]">
                 <div class="text-[#e7c36f] text-3xl tracking-[0.08em] leading-none mb-8" aria-hidden="true">
                   ★★★★★
                 </div>
@@ -376,7 +429,7 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section id="faq" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-white">
+    <section id="faq" class="scroll-mt-28 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
       <div class="max-w-5xl mx-auto">
         <FadeIn>
           <div class="mb-10">
@@ -388,7 +441,7 @@ const faqs = copy.faqSection.items;
         <div class="space-y-4">
           {faqs.map((faq, idx) => (
             <FadeIn delay={idx * 60}>
-              <details class="group rounded-2xl border border-primary/10 bg-background p-5 md:p-6">
+              <details class="group rounded-2xl border border-primary/10 bg-background p-4 sm:p-5 md:p-6">
                 <summary class="list-none cursor-pointer flex items-start justify-between gap-4">
                   <span class="text-base md:text-lg font-medium">{faq.q}</span>
                   <span class="mt-1 text-[#c96d33] transition-transform group-open:rotate-45">+</span>
@@ -401,7 +454,7 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section id="about-us" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-background">
+    <section id="about-us" class="scroll-mt-28 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-background">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
         <FadeIn>
           <div class="rounded-2xl overflow-hidden aspect-[4/5]">
@@ -426,10 +479,10 @@ const faqs = copy.faqSection.items;
       </div>
     </section>
 
-    <section id="contact" class="scroll-mt-28 py-20 md:py-28 px-6 lg:px-8 bg-white">
+    <section id="contact" class="scroll-mt-28 py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-white">
       <div class="max-w-6xl mx-auto">
         <FadeIn>
-          <div class="rounded-3xl bg-primary text-white p-8 md:p-12">
+          <div class="rounded-3xl bg-primary text-white p-5 sm:p-7 md:p-12">
             <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10">
               <div>
                 <p class="text-xs uppercase tracking-[0.28em] text-white/70 mb-4">{copy.contactSection.eyebrow}</p>
@@ -449,7 +502,7 @@ const faqs = copy.faqSection.items;
                 </div>
               </div>
 
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                 <p class="text-xs uppercase tracking-[0.22em] text-white/70 mb-3">{copy.contactSection.addressLabel}</p>
                 <p class="leading-relaxed text-white/90">
                   Calle Almona 11
