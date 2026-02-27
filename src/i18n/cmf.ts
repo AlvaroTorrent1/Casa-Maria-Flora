@@ -114,7 +114,7 @@ export const cmfCopy = {
       body:
         'To make a booking you can check the availability calendar down below and create your booking directly from our website. If you have special wishes regarding arrival days or longer or shorter stays, please send us an email or WhatsApp.',
       note:
-        'In this Astro phase, the booking engine is temporarily replaced by direct contact until Phase 2.',
+        'Please contact us directly for any special requests regarding arrival days or longer/shorter stays.',
       emailButton: 'Email Us',
       contactButton: 'Contact Section',
       placeholderEyebrow: 'Phase 2 placeholder',
@@ -208,7 +208,7 @@ export const cmfCopy = {
       title: 'Do you want some more information?',
       subtitle: 'Fill in our contact form or give us a call',
       body:
-        'We are keeping this Astro version simple for now, so contact is handled directly by email or phone while the booking engine is rebuilt in Phase 2.',
+        'We are happy to help you with any questions. Feel free to reach out to us directly by email or phone.',
       addressLabel: 'Address',
       openInMaps: 'Open in Maps',
     },
@@ -320,7 +320,7 @@ export const cmfCopy = {
       body:
         'Para reservar, puedes consultar el calendario de disponibilidad y completar tu reserva directamente desde nuestra web. Si tienes peticiones especiales sobre dias de llegada o estancias mas largas o mas cortas, envianos un email o WhatsApp.',
       note:
-        'En esta fase en Astro, el motor de reservas se ha sustituido temporalmente por contacto directo hasta la Fase 2.',
+        'Por favor, contactanos directamente para cualquier peticion especial sobre dias de llegada o estancias mas largas/cortas.',
       emailButton: 'Enviar email',
       contactButton: 'Ir a contacto',
       placeholderEyebrow: 'Marcador Fase 2',
@@ -414,7 +414,7 @@ export const cmfCopy = {
       title: 'Quieres mas informacion?',
       subtitle: 'Rellena nuestro formulario de contacto o llamanos',
       body:
-        'Por ahora mantenemos esta version en Astro de forma simple, asi que el contacto se gestiona directamente por email o telefono mientras reconstruimos el motor de reservas en la Fase 2.',
+        'Estaremos encantadas de ayudarte con cualquier duda. No dudes en contactarnos directamente por email o telefono.',
       addressLabel: 'Direccion',
       openInMaps: 'Abrir en Maps',
     },
