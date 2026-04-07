@@ -111,9 +111,29 @@ Fonts are loaded from Google Fonts in `src/layouts/Base.astro`. Update the link 
 
 1. Push to GitHub
 2. Import project in Vercel
-3. Deploy automatically
+3. Add these environment variables in Vercel:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxx
+RESEND_TO_EMAIL=hola@casa-maria-flora.com
+RESEND_FROM_EMAIL="Casa Maria Flora <contact@casa-maria-flora.com>"
+```
+
+4. Deploy automatically
 
 The `vercel.json` file includes optimized caching headers.
+
+### Contact Form (Resend)
+
+The production contact form uses Resend through `src/pages/api/contact.ts`.
+
+Before using it in production:
+
+1. Create a free Resend account.
+2. Verify your sending domain in Resend.
+3. Create an API key.
+4. Set the environment variables shown above in Vercel.
+5. Make sure `RESEND_FROM_EMAIL` uses an address from your verified domain.
 
 ### Other Platforms
 
