@@ -23,8 +23,7 @@ const imgPlaza = '/cmf/plaza-ojen.jpeg';
 const imgBeach = '/cmf/istockphoto-1363636426-612x612-1.jpeg';
 const imgDormitorio = '/dormitorio-maria-flora.jpg';
 const lang = getLangFromUrl(Astro.url);
-const bookingEmbedLang = lang === 'es' ? 'es' : 'en';
-const bookingEmbedUrl = `https://hosthelperai.com/book/casa-maria-flora?lang=${bookingEmbedLang}`;
+const bookingEmbedUrl = 'https://hosthelperai.com/book/casa-maria-flora';
 const translatePath = useTranslatedPath(lang);
 const copy = getCmfCopy(lang);
 const contactStatus = Astro.url.searchParams.get('contact');
@@ -188,25 +187,54 @@ const faqs = copy.faqSection.items;
             <p class="text-xs uppercase tracking-[0.25em] text-[#c96d33] mb-1">{copy.directBooking.eyebrow}</p>
             <h3 class="text-2xl mb-4">{copy.directBooking.title}</h3>
 
-            <!-- iframe wrapper — becomes fullscreen target -->
+            <a
+              href={bookingEmbedUrl}
+              target="_blank"
+              rel="noopener"
+              class="mb-3 inline-flex text-sm font-medium text-[#c96d33] underline decoration-[#c96d33]/35 underline-offset-4"
+            >
+              {lang === 'es' ? 'Abrir reserva en nueva pestana' : 'Open booking in a new tab'}
+            </a>
+
+            <!-- Host Helper booking iframe -->
             <div
               id="booking-iframe-wrapper"
-              class="flex-grow -mx-3 sm:mx-0 rounded-none sm:rounded-2xl border-y border-primary/10 sm:border sm:border-primary/10 bg-white shadow-none sm:shadow-[0_4px_24px_rgba(0,0,0,0.08)] overflow-hidden relative"
+              class="flex-grow -mx-3 sm:mx-0 rounded-none sm:rounded-2xl border-y border-primary/10 sm:border sm:border-primary/10 bg-white shadow-none sm:shadow-[0_4px_24px_rgba(0,0,0,0.08)] overflow-visible relative"
               role="region"
               aria-label={lang === 'es' ? 'Widget de reserva' : 'Booking widget'}
             >
               <iframe
-                id="booking-iframe"
+                id="hosthelper-booking"
                 src={bookingEmbedUrl}
-                width="100%"
-                height="900"
                 class="block w-full"
-                style="border: none; height: 900px; display: block;"
-                loading="lazy"
-                allow="payment"
+                style="width: 100%; min-height: 950px; border: 0; display: block;"
+                allow="payment *; publickey-credentials-get *"
                 title={copy.directBooking.iframeTitle}
               ></iframe>
             </div>
+
+            <script>
+              const iframe = document.getElementById('hosthelper-booking');
+
+              window.addEventListener('message', (event) => {
+                if (event.origin !== 'https://hosthelperai.com') return;
+                if (!event.data?.type?.startsWith('hosthelper:booking:')) return;
+
+                if (event.data.type === 'hosthelper:booking:resize' && event.data.height && iframe) {
+                  const height = Number(event.data.height);
+                  if (Number.isFinite(height)) {
+                    iframe.style.height = `${Math.max(950, height)}px`;
+                  }
+                }
+
+                if (
+                  event.data.type === 'hosthelper:booking:payment_ready' ||
+                  event.data.type === 'hosthelper:booking:payment_error'
+                ) {
+                  console.info('[Host Helper booking]', event.data);
+                }
+              });
+            </script>
           </article>
         </FadeIn>
 

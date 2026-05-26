@@ -12,8 +12,11 @@
     const button = document.querySelector('[data-scroll-top]') as HTMLButtonElement | null;
     if (!button) return;
 
+    const bookingWidget = document.getElementById('booking-widget');
+    let bookingWidgetInView = false;
+
     const toggleVisibility = () => {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 500 && !bookingWidgetInView) {
         button.classList.add('is-visible');
       } else {
         button.classList.remove('is-visible');
@@ -27,6 +30,15 @@
 
     toggleVisibility();
     window.addEventListener('scroll', toggleVisibility, { passive: true });
+
+    if (bookingWidget) {
+      const observer = new IntersectionObserver((entries) => {
+        bookingWidgetInView = entries.some((entry) => entry.isIntersecting);
+        toggleVisibility();
+      }, { threshold: 0.01 });
+
+      observer.observe(bookingWidget);
+    }
   }
 
   initScrollTop();
