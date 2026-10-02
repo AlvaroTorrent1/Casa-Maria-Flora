@@ -31,3 +31,10 @@ pnpm-debug.log*
 tmp_*.html
 .vercel
 .env*.local
+
+# Local inspection exports; excluded from Git and deployment.
+booking_embed.js
+booking_page.html
+hosthelper_index.js
+hosthelper_supabase.js
+stripe-config-CZ8nzAnX.js
