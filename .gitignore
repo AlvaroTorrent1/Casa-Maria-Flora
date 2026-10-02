@@ -29,3 +29,5 @@ pnpm-debug.log*
 
 # temp scraping/export files
 tmp_*.html
+.vercel
+.env*.local

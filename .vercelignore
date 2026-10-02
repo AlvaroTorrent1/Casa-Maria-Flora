@@ -1,0 +1,11 @@
+.git
+node_modules
+dist
+.vercel
+.env*
+!.env.example
+booking_embed.js
+booking_page.html
+hosthelper_index.js
+hosthelper_supabase.js
+stripe-config-CZ8nzAnX.js
