@@ -23,7 +23,7 @@ const imgPlaza = '/cmf/plaza-ojen.jpeg';
 const imgBeach = '/cmf/istockphoto-1363636426-612x612-1.jpeg';
 const imgDormitorio = '/dormitorio-maria-flora.jpg';
 const lang = getLangFromUrl(Astro.url);
-const bookingEmbedUrl = 'https://hosthelperai.com/book/casa-maria-flora';
+const bookingEmbedUrl = `https://hosthelperai.com/book/casa-maria-flora?lang=${lang}`;
 const translatePath = useTranslatedPath(lang);
 const copy = getCmfCopy(lang);
 const contactStatus = Astro.url.searchParams.get('contact');
@@ -207,7 +207,7 @@ const faqs = copy.faqSection.items;
                 id="hosthelper-booking"
                 src={bookingEmbedUrl}
                 class="block w-full"
-                style="width: 100%; min-height: 950px; border: 0; display: block;"
+                style="width: 100%; height: 950px; border: 0; display: block;"
                 allow="payment *; publickey-credentials-get *"
                 allowpaymentrequest
                 title={copy.directBooking.iframeTitle}
@@ -224,8 +224,8 @@ const faqs = copy.faqSection.items;
 
                 if (['hosthelper:resize', 'hosthelper:booking:resize'].includes(event.data.type) && event.data.height && iframe) {
                   const height = Number(event.data.height);
-                  if (Number.isFinite(height)) {
-                    iframe.style.height = `${Math.max(950, height)}px`;
+                  if (Number.isFinite(height) && height > 0) {
+                    iframe.style.height = `${Math.ceil(height)}px`;
                   }
                 }
 
