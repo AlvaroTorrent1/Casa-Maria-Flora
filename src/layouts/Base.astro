@@ -24,6 +24,35 @@ const htmlLang = getLangFromUrl(Astro.url);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script is:inline>
+      (() => {
+        // The home pages are prerendered, so resolve an explicit incoming
+        // language before the page and booking iframe start loading.
+        if (!['/', '/es', '/es/'].includes(window.location.pathname)) return;
+        const query = new URLSearchParams(window.location.search);
+        const language = query.get('lang');
+        if (!['en', 'es'].includes(language) || language === document.documentElement.lang) return;
+        const validDate = value => {
+          if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+          const date = new Date(`${value}T00:00:00Z`);
+          return Number.isFinite(date.valueOf()) && date.toISOString().slice(0, 10) === value;
+        };
+        const start = query.get('check_in');
+        const end = query.get('check_out');
+        const next = new URLSearchParams();
+        if (validDate(start) && validDate(end) && end > start) {
+          next.set('check_in', start);
+          next.set('check_out', end);
+        }
+        const contact = query.get('contact');
+        if (contact === 'success' || contact === 'error') next.set('contact', contact);
+        next.set('lang', language);
+        const safeAnchors = ['#booking-widget', '#booking', '#features', '#gallery', '#faq', '#about-us', '#contact'];
+        const anchor = safeAnchors.includes(window.location.hash) ? window.location.hash : '';
+        window.location.replace(`${language === 'es' ? '/es' : '/'}?${next}${anchor}`);
+      })();
+    </script>
     
     <!-- SEO -->
     <title>{title}</title>

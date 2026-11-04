@@ -64,6 +64,7 @@ const availableLanguages = (codes?.length
     {availableLanguages.map(([code, name]) => (
       <a 
         href={getLocalizedUrl(linkBaseUrl, code)}
+        data-language-code={code}
         class:list={[
           "flex items-center gap-3 px-5 py-2.5 text-sm tracking-wide transition-all duration-200",
           code === currentLang 
