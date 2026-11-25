@@ -4,7 +4,7 @@ import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
 
 const currentYear = new Date().getFullYear();
 const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
+const translatePath = useTranslatedPath(Astro.url);
 const copy = getCmfCopy(lang);
 
 const navLinks = copy.footer.nav.map((item) => ({

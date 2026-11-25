@@ -12,8 +12,13 @@ export function useTranslations(lang: keyof typeof ui) {
   };
 }
 
-export function useTranslatedPath(lang: keyof typeof ui) {
+export function useTranslatedPath(url: URL) {
+  const lang = getLangFromUrl(url);
   return function translatePath(path: string, l: string = lang) {
+    const homePath = l === defaultLang ? '/' : `/${l}/`;
+    if (path.startsWith('/#') && (url.pathname === homePath || url.pathname + '/' === homePath)) {
+      return path.slice(1);
+    }
     const pathName = path.startsWith('/') ? path : `/${path}`;
     return l === defaultLang ? pathName : `/${l}${pathName}`;
   };

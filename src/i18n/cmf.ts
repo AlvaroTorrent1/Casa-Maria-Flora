@@ -15,7 +15,7 @@ export const cmfCopy = {
     },
     header: {
       nav: [
-        { href: '/#booking', label: 'Book Now' },
+        { href: '/#booking-widget', label: 'Book Now' },
         { href: '/#features', label: 'Features' },
         { href: '/#gallery', label: 'Gallery' },
         { href: '/#about-us', label: 'About Us' },
@@ -29,7 +29,7 @@ export const cmfCopy = {
       tagline: 'Ojen · Andalusia · Spain',
       nav: [
         { href: '/#features', label: 'Features' },
-        { href: '/#booking', label: 'Booking' },
+        { href: '/#booking-widget', label: 'Booking' },
         { href: '/#gallery', label: 'Gallery' },
         { href: '/#faq', label: 'FAQ' },
         { href: '/#about-us', label: 'About Us' },
@@ -38,7 +38,7 @@ export const cmfCopy = {
       social: [
         { href: 'mailto:hola@casa-maria-flora.com', label: 'Email' },
         { href: 'tel:+34680607675', label: 'Phone' },
-        { href: '/#booking', label: 'Book Now' },
+        { href: '/#booking-widget', label: 'Book Now' },
       ],
       locationLine: 'Holiday home in Ojen, Malaga, Andalusia, Spain.',
       addressLine: 'Calle Almona 11 · 29610 Ojen · hola@casa-maria-flora.com',
@@ -225,7 +225,7 @@ export const cmfCopy = {
     },
     header: {
       nav: [
-        { href: '/#booking', label: 'Reserva' },
+        { href: '/#booking-widget', label: 'Reserva' },
         { href: '/#features', label: 'Caracteristicas' },
         { href: '/#gallery', label: 'Galeria' },
         { href: '/#about-us', label: 'Sobre nosotras' },
@@ -239,7 +239,7 @@ export const cmfCopy = {
       tagline: 'Ojen · Andalucia · Espana',
       nav: [
         { href: '/#features', label: 'Caracteristicas' },
-        { href: '/#booking', label: 'Reserva' },
+        { href: '/#booking-widget', label: 'Reserva' },
         { href: '/#gallery', label: 'Galeria' },
         { href: '/#faq', label: 'FAQ' },
         { href: '/#about-us', label: 'Sobre nosotras' },
@@ -248,7 +248,7 @@ export const cmfCopy = {
       social: [
         { href: 'mailto:hola@casa-maria-flora.com', label: 'Email' },
         { href: 'tel:+34680607675', label: 'Telefono' },
-        { href: '/#booking', label: 'Reserva' },
+        { href: '/#booking-widget', label: 'Reserva' },
       ],
       locationLine: 'Casa vacacional en Ojen, Malaga, Andalucia, Espana.',
       addressLine: 'Calle Almona 11 · 29610 Ojen · hola@casa-maria-flora.com',

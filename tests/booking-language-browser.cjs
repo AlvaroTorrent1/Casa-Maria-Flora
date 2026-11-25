@@ -40,6 +40,24 @@ async function languageMenu(page, width, language) {
   return selector.locator(`[data-language-code="${language}"]`);
 }
 
+async function checkBookingLinks(page, width) {
+  const landing = new URL(page.url());
+  landing.hash = 'booking-widget';
+  const links = page.locator('a[href="#booking-widget"]');
+  assert.equal(await links.count(), 6, 'All header, hero and footer booking links target the calendar');
+  const frame = await page.locator('#hosthelper-booking').elementHandle();
+  const originalSrc = await frame.getAttribute('src');
+  const hero = page.locator('main a[href="#booking-widget"]');
+  await hero.click();
+  assert.equal(page.url(), landing.href);
+  if (width < 768) await page.locator('[data-menu-toggle]').click();
+  const header = page.locator(width < 768 ? '[data-mobile-menu]' : 'header nav');
+  await header.locator('a[href="#booking-widget"]').first().click();
+  assert.equal(page.url(), landing.href);
+  assert.ok(await frame.evaluate(el => el.isConnected), 'The same booking iframe stays mounted');
+  assert.equal(await frame.getAttribute('src'), originalSrc);
+}
+
 (async () => {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const origin = 'http://127.0.0.1:' + server.address().port;
@@ -64,6 +82,7 @@ async function languageMenu(page, width, language) {
       assert.equal(frameUrl.searchParams.get('lang'), 'es');
       assert.equal(frameUrl.searchParams.get('check_out'), '2027-06-13');
       assert.equal(frameUrl.searchParams.has('token'), false);
+      await checkBookingLinks(page, viewport.width);
       const english = await languageMenu(page, viewport.width, 'en');
       const href = await english.getAttribute('href');
       assert.match(href, /check_in=2027-06-10/);
@@ -78,6 +97,7 @@ async function languageMenu(page, width, language) {
       assert.equal(frameUrl.searchParams.get('check_in'), '2027-06-10');
       assert.equal(frameUrl.searchParams.get('check_out'), '2027-06-13');
 
+      await checkBookingLinks(page, viewport.width);
       await page.goto(origin + '/?lang=es&check_in=2027-02-29&check_out=2027-03-03&email=fake%40example.invalid', { waitUntil: 'domcontentloaded' });
       await page.waitForURL(url => url.pathname === '/es', { waitUntil: 'domcontentloaded' });
       const redir = new URL(page.url());

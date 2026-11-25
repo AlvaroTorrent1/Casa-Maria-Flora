@@ -9,7 +9,7 @@ interface Props {
 
 const { transparent = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
+const translatePath = useTranslatedPath(Astro.url);
 const copy = getCmfCopy(lang);
 const navItems = copy.header.nav.map((item) => ({
   ...item,
